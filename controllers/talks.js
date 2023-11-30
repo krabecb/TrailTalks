@@ -4,6 +4,7 @@ module.exports = {
     show,
     create,
     imageUpload: addTalk,
+    update: updateTalk,
     delete: deleteTalk
 }
 
@@ -78,6 +79,16 @@ function streamUpload(req) {
         });
         streamifier.createReadStream(req.file.buffer).pipe(stream)
     })
+}
+
+async function updateTalk(req, res, next) {
+    try {
+        const updatedTalk = await Talk.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.redirect(`/talks/${req.params.id}`)
+    } catch(err) {
+        console.log(err)
+        next(err)
+    }
 }
 
 async function deleteTalk(req, res, next) {

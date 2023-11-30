@@ -17,6 +17,8 @@ router.post('/', talksCtrl.create)
 
 router.post('/:id/photos/single', upload.single("imageUpload"), talksCtrl.imageUpload)
 
+router.put('/:id', talksCtrl.update)
+
 router.delete('/:id', talksCtrl.delete)
 
 module.exports = router
