@@ -3,7 +3,8 @@ module.exports = {
     new: newTalk,
     show,
     create,
-    imageUpload: addTalk
+    imageUpload: addTalk,
+    delete: deleteTalk
 }
 
 const cloudinary = require("cloudinary").v2;
@@ -65,7 +66,7 @@ async function addTalk(req, res, next) {
     }
 }
 
-function streamUpload (req){
+function streamUpload(req) {
     return new Promise(function (resolve, reject){
         let stream = cloudinary.uploader.upload_stream( function(error, result){
             if(result){
@@ -77,4 +78,14 @@ function streamUpload (req){
         });
         streamifier.createReadStream(req.file.buffer).pipe(stream)
     })
+}
+
+async function deleteTalk(req, res, next) {
+    try {
+        await Talk.findByIdAndDelete(req.params.id);
+        res.redirect('/talks');
+    } catch(err) {
+        console.log(err)
+        next(err)
+    }
 }
