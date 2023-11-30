@@ -7,11 +7,28 @@ const imageSchema = new mongoose.Schema({
     alt: {type: String, default:""} 
 })
 
+const commentSchema = new Schema({
+    content: {
+      type: String,
+      required: true
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
+    userName: String,
+    userAvatar: String
+  }, {
+    timestamps: true
+  });
+
 const talkSchema = new Schema({
     title: String,
     location: String,
     description: String,
-    images: [imageSchema]
+    images: [imageSchema],
+    comments: [commentSchema]
   }, {
     timestamps: true
   });

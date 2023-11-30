@@ -1,57 +1,75 @@
 <%- include('../partials/header') %>
 
     <div>
-        <h2><%=talk.title%></h2>
-        <p>Shared on: <%=talk.createdAt.toLocaleDateString()%></p>
-        <p><%=talk.description%></p>
+        <h2>
+            <%=talk.title%>
+        </h2>
+        <p>Shared on: <%=talk.createdAt.toLocaleDateString()%>
+        </p>
+        <p>
+            <%=talk.description%>
+        </p>
     </div>
     <hr>
 
     <div>
         <% talk.images.forEach(image => { %>
             <div>
-            <img src="<%=image.url%>" alt="<%=image.alt%>"/>
-            <p><%=image.description%></p>
-        </div>
-        <% }) %>
+                <img src="<%=image.url%>" alt="<%=image.alt%>" />
+                <p>
+                    <%=image.description%>
+                </p>
+            </div>
+            <% }) %>
     </div>
     <hr>
 
     <h2>Need To Update Something?</h2>
     <form id="update-form" method="POST" action="/talks/<%= talk._id %>?_method=PUT">
 
-    <label
-        >Title:
-        <input type="text" name="title" required />
-    </label>
+        <label>Title:
+            <input type="text" name="title" required />
+        </label>
 
-    <label
-        >Location:
-        <input type="text" name="location" />
-    </label>
+        <label>Location:
+            <input type="text" name="location" />
+        </label>
 
-    <label
-        >Description:
-        <input type="text" name="description" />
-    </label>
+        <label>Description:
+            <input type="text" name="description" />
+        </label>
 
-    <button type="submit">Update!</button>
-    
+        <button type="submit">Update!</button>
+
+    </form>
+
+    <div>
+        <% talk.comments.forEach(comment => { %>
+            <div>
+                <img alt="avatar" src="<%= comment.userAvatar %>">
+                <p><%=comment.userName%></p>
+                <p><%=comment.content%></p>
+            </div>
+            <% }) %>
+    </div>
+
+    <h2>Comments</h2>
+
+    <form id="add-comment-form" method="POST" action="/talks/<%= talk._id %>/comments">
+        <label>Comment:</label>
+        <textarea name="content"></textarea>
+        <input type="submit" value="Add Review" />
     </form>
 
     <div>
         <h2>Add an image:</h2>
-        <form
-            autocomplete="off"
-            action="/talks/<%=talk._id%>/photos/single"
-            method="POST"
-            enctype="multipart/form-data"
-        >
-        <!-- enctype - allows one to send files -->
-            
+        <form autocomplete="off" action="/talks/<%=talk._id%>/photos/single" method="POST"
+            enctype="multipart/form-data">
+            <!-- enctype - allows one to send files -->
+
             <label>
                 Image Upload
-                <input type="file" name="imageUpload" required/>
+                <input type="file" name="imageUpload" required />
             </label>
             <label>
                 Image Description
@@ -65,4 +83,4 @@
         </form>
     </div>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>
