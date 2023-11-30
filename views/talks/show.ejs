@@ -13,7 +13,7 @@
     <hr>
 
     <div>
-        <% talk.images.forEach(image => { %>
+        <% talk.images.forEach(image=> { %>
             <div>
                 <img src="<%=image.url%>" alt="<%=image.alt%>" />
                 <p>
@@ -44,11 +44,18 @@
     </form>
 
     <div>
-        <% talk.comments.forEach(comment => { %>
+        <% talk.comments.forEach(comment=> { %>
             <div>
                 <img alt="avatar" src="<%= comment.userAvatar %>">
-                <p><%=comment.userName%></p>
-                <p><%=comment.content%></p>
+                <p>
+                    <%=comment.userName%>
+                </p>
+                <p>
+                    <%=comment.content%>
+                </p>
+                <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                    <button type="submit">Remove</button>
+                </form>
             </div>
             <% }) %>
     </div>
