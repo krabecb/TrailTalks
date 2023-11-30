@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+
+    <div>
+        <h2><%=talk.title%></h2>
+        <p>Shared on: <%=talk.createdAt.toLocaleDateString()%></p>
+        <p><%=talk.description%></p>
+    </div>
+    <hr>
+
+    <div>
+        <% talk.images.forEach(image => { %>
+            <div>
+            <img src="<%=image.url%>" alt="<%=image.alt%>"/>
+            <p><%=image.description%></p>
+        </div>
+        <% }) %>
+    </div>
+    <hr>
+
+    <div>
+        <h2>Add an image:</h2>
+        <form
+            autocomplete="off"
+            action="/talks/<%=talk._id%>/photos/single"
+            method="POST"
+            enctype="multipart/form-data"
+        >
+        <!-- enctype - allows one to send files -->
+            
+            <label>
+                Image Upload
+                <input type="file" name="imageUpload" required/>
+            </label>
+            <label>
+                Image Description
+                <input type="text" name="description" />
+            </label>
+            <label>
+                Image Alt Text
+                <input type="text" name="alt" />
+            </label>
+            <button type="submit">Submit Upload</button>
+        </form>
+    </div>
+
+<%- include('../partials/footer') %>

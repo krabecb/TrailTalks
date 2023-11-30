@@ -1,11 +1,11 @@
-var express = require('express');
-const passport = require('passport');
-var router = express.Router();
+const express = require('express')
+const passport = require('passport')
+const router = express.Router()
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+  res.render('index', { title: 'Express' })
+})
 
 router.get('/auth/google', passport.authenticate(
   // Which passport strategy is being used?
@@ -16,7 +16,7 @@ router.get('/auth/google', passport.authenticate(
     // Optionally force pick account every time
     // prompt: "select_account"
   }
-));
+))
 
 router.get('/oauth2callback', passport.authenticate(
   'google',
@@ -24,12 +24,12 @@ router.get('/oauth2callback', passport.authenticate(
     successRedirect: '/',
     failureRedirect: '/'
   }
-));
+))
 
 router.get('/logout', function(req, res){
   req.logout(function() {
-    res.redirect('/');
-  });
-});
+    res.redirect('/')
+  })
+})
 
-module.exports = router;
+module.exports = router

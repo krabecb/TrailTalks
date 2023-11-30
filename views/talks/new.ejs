@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+    <h2>Got Something To Talk About?</h2>
+    <form id="new-form" action="/talks" method="POST">
+
+    <label
+        >Title:
+        <input type="text" name="title" required />
+    </label>
+
+    <label
+        >Location:
+        <input type="text" name="location" />
+    </label>
+
+    <label
+        >Description:
+        <input type="text" name="description" />
+    </label>
+
+    <button type="submit">Share!</button>
+    
+    </form>
+    <p><%= error %></p>
+
+<%- include('../partials/footer') %>

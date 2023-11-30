@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+
+<ul>
+    <% talks.forEach(talk => { %>
+        <li><a href="/talks/<%= talk._id %>"><%=talk.title%></a></li>
+    <% }) %>
+</ul>
+
+<%- include('../partials/footer') %>

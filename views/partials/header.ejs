@@ -10,6 +10,7 @@
   <body>
 
     <nav>
+        <a href="/talks" <%- title === 'All Talks' ? 'class="active"' : '' %>>ALL TALKS</a>
       <% if (user) { %>
         <a href="/talks/new" <%- title === 'Add Talk' ? 'class="active"' : '' %>>START A TALK</a>
         <a href="/logout">LOG OUT</a>
