@@ -18,7 +18,7 @@ const Talk = require('../models/talk.js')
 async function index(req, res, next) {
     try {
         const talks = await Talk.find({})
-        res.render('talks/index', { title: 'All Talks', talks: talks})
+        res.render('talks/index', { title: "What everyone's talking about", talks: talks})
     } catch(err) {
         console.log(err)
         next(err)
@@ -36,7 +36,7 @@ async function newTalk(req, res, next) {
 
 async function show(req, res, next) {
     try {
-        res.render('talks/show', { title: 'Looks Interesting...', talk: await Talk.findById(req.params.id)})
+        res.render('talks/show', { title: '', talk: await Talk.findById(req.params.id)})
     } catch(err) {
         console.log(err)
         next(err)

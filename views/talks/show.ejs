@@ -24,70 +24,74 @@
     </div>
     <hr>
 
-    <h2>Need To Update Something?</h2>
-    <form id="update-form" method="POST" action="/talks/<%= talk._id %>?_method=PUT">
+    <% if (user) { %>
 
-        <label>Title:
-            <input type="text" name="title" required />
-        </label>
+        <h2>Need To Update Something?</h2>
+        <form id="update-form" method="POST" action="/talks/<%= talk._id %>?_method=PUT">
 
-        <label>Location:
-            <input type="text" name="location" />
-        </label>
-
-        <label>Description:
-            <input type="text" name="description" />
-        </label>
-
-        <button type="submit">Update!</button>
-
-    </form>
-
-    <div>
-        <% talk.comments.forEach(comment=> { %>
-            <div>
-                <img alt="avatar" src="<%= comment.userAvatar %>">
-                <p>
-                    <%=comment.userName%>
-                </p>
-                <p>
-                    <%=comment.content%>
-                </p>
-                <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                    <button type="submit">Remove</button>
-                </form>
-            </div>
-            <% }) %>
-    </div>
-
-    <h2>Comments</h2>
-
-    <form id="add-comment-form" method="POST" action="/talks/<%= talk._id %>/comments">
-        <label>Comment:</label>
-        <textarea name="content"></textarea>
-        <input type="submit" value="Add Review" />
-    </form>
-
-    <div>
-        <h2>Add an image:</h2>
-        <form autocomplete="off" action="/talks/<%=talk._id%>/photos/single" method="POST"
-            enctype="multipart/form-data">
-            <!-- enctype - allows one to send files -->
-
-            <label>
-                Image Upload
-                <input type="file" name="imageUpload" required />
+            <label>Title:
+                <input type="text" name="title" required />
             </label>
-            <label>
-                Image Description
+
+            <label>Location:
+                <input type="text" name="location" />
+            </label>
+
+            <label>Description:
                 <input type="text" name="description" />
             </label>
-            <label>
-                Image Alt Text
-                <input type="text" name="alt" />
-            </label>
-            <button type="submit">Submit Upload</button>
+
+            <button type="submit">Update!</button>
+
         </form>
-    </div>
+
+        <div>
+            <% talk.comments.forEach(comment=> { %>
+                <div>
+                    <img alt="avatar" src="<%= comment.userAvatar %>">
+                    <p>
+                        <%=comment.userName%>
+                    </p>
+                    <p>
+                        <%=comment.content%>
+                    </p>
+                    <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Remove</button>
+                    </form>
+                </div>
+                <% }) %>
+        </div>
+
+        <h2>Comments</h2>
+
+        <form id="add-comment-form" method="POST" action="/talks/<%= talk._id %>/comments">
+            <label>Comment:</label>
+            <textarea name="content"></textarea>
+            <input type="submit" value="Add Review" />
+        </form>
+
+        <div>
+            <h2>Add an image:</h2>
+            <form autocomplete="off" action="/talks/<%=talk._id%>/photos/single" method="POST"
+                enctype="multipart/form-data">
+                <!-- enctype - allows one to send files -->
+
+                <label>
+                    Image Upload
+                    <input type="file" name="imageUpload" required />
+                </label>
+                <label>
+                    Image Description
+                    <input type="text" name="description" />
+                </label>
+                <label>
+                    Image Alt Text
+                    <input type="text" name="alt" />
+                </label>
+                <button type="submit">Submit Upload</button>
+            </form>
+        </div>
+
+    <% } %>
 
     <%- include('../partials/footer') %>

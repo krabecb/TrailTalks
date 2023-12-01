@@ -1,14 +1,18 @@
 <%- include('../partials/header') %>
 
-<ul>
-    <% talks.forEach(talk => { %>
-        <li>
-            <a href="/talks/<%= talk._id %>"><%=talk.title%></a>
-            <form action="/talks/<%= talk._id %>?_method=DELETE"" method="POST">
-                <button type="submit">Remove</button>
-            </form>
-        </li>
-    <% }) %>
-</ul>
+    <ul>
+        <% talks.forEach(talk=> { %>
+            <li>
+                <a href="/talks/<%= talk._id %>">
+                    <%=talk.title%>
+                </a>
+                <% if (user) { %>
+                    <form action="/talks/<%= talk._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Remove</button>
+                    </form>
+                <% } %>
+            </li>
+        <% }) %>
+    </ul>
 
 <%- include('../partials/footer') %>
