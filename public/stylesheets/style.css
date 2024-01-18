@@ -1,9 +1,18 @@
-body {
+html, body {
   background-color: #333333;
   color: ghostwhite;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Arial", Helvetica, Arial, sans-serif;
   text-align: center;
-  padding: 25px;
+  height: 100%;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #333333;
+  color: ghostwhite;
+  height: 75px;
 }
 
 a {
@@ -12,7 +21,21 @@ a {
   text-decoration: none;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  background-color: ghostwhite;
+  color: #333333;
+  width: 100%;
+  margin: 0;
+}
+
 ul {
+  width: 100%;
   padding: 0;
 }
 
@@ -34,4 +57,51 @@ button {
 img {
   height: auto;
   width: 300px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.a-container {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.home, .sub-a-container {
+  margin: 25px;
+}
+
+.main-container {
+  color: ghostwhite;
+  font-size: 100px;
+  border-radius: 8px;
+}
+
+.main-h2 {
+  margin-bottom: 0;
+}
+
+.show-container {
+  width: 100%;
+}
+
+.new-button {
+  background-color: #00B7FF;
+  margin: 25px 0 0 0;
+}
+
+#new-form {
+  display: flex;
+  flex-direction: column;
 }

@@ -7,17 +7,21 @@
     <title>TrailTalks</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
-  <body>
+  <body <%- title === 'TrailTalks' ? 'style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/DSC02595.jpg); background-size: cover;"' : '' %>>
 
     <nav>
-        <a href="/">🥾</a> | 
-        <a href="/talks" <%- title === 'All Talks' ? 'class="active"' : '' %>>ALL TALKS</a> | 
-      <% if (user) { %>
-        <a href="/talks/new" <%- title === 'Add Talk' ? 'class="active"' : '' %>>START A TALK</a> | 
-        <a href="/logout">LOG OUT</a>
-      <% } else { %>
-        <a href="/auth/google" class="login">LOG IN</a>
-      <% } %>
+      <div class="a-container">
+        <a href="/" class="home">HOME</a>
+        <div class="sub-a-container">
+          <a href="/talks" <%- title === 'All Talks' ? 'class="active"' : '' %>>ALL TALKS</a> &nbsp;&nbsp;|&nbsp;&nbsp; 
+          <% if (user) { %>
+            <a href="/talks/new" <%- title === 'Add a talk.' ? 'class="active"' : '' %>>START A TALK</a> &nbsp;&nbsp;|&nbsp;&nbsp; 
+            <a href="/logout">LOG OUT</a>
+          <% } else { %>
+            <a href="/auth/google" class="login">LOG IN</a>
+          <% } %>
+        </div>
+      </div>
     </nav>
     <main>
       <h1><%= title %></h1>

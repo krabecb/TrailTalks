@@ -3,9 +3,11 @@
     <ul>
         <% talks.forEach(talk=> { %>
             <li>
-                <a href="/talks/<%= talk._id %>">
-                    <%=talk.title%>
-                </a>
+                <h3>
+                    <a href="/talks/<%= talk._id %>">
+                        <%=talk.title%>
+                    </a>
+                </h3>
                 <% if (user) { %>
                     <form action="/talks/<%= talk._id %>?_method=DELETE" method="POST">
                         <button type="submit">Remove</button>

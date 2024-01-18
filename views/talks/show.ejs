@@ -1,18 +1,16 @@
 <%- include('../partials/header') %>
 
-    <div>
-        <h2>
+    <div class="show-container">
+        <h1>
             <%=talk.title%>
+        </h1>
+        <h2>
+            Shared on: <%=talk.createdAt.toLocaleDateString()%>
         </h2>
-        <p>Shared on: <%=talk.createdAt.toLocaleDateString()%>
-        </p>
-        <p>
+        <h3>
             <%=talk.description%>
-        </p>
-    </div>
-    <hr>
-
-    <div>
+        </h3>
+    
         <% talk.images.forEach(image=> { %>
             <div>
                 <img src="<%=image.url%>" alt="<%=image.alt%>" />
@@ -20,9 +18,8 @@
                     <%=image.description%>
                 </p>
             </div>
-            <% }) %>
+        <% }) %>
     </div>
-    <hr>
 
     <% if (user) { %>
 

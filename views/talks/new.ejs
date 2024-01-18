@@ -1,26 +1,29 @@
 <%- include('../partials/header') %>
 
-    <h2>Got Something To Talk About?</h2>
     <form id="new-form" action="/talks" method="POST">
+        <div class="form-section">
+            <label>Title
+                <input type="text" name="title" required />
+            </label>
+        </div>
+        
+        <div class="form-section">
+            <label>Location
+                <input type="text" name="location" />
+            </label>
+        </div>
+        
+        <div class="form-section">
+            <label>Description
+                <textarea name="description" id="textarea" cols="50" rows="10"></textarea>
+            </label>
+        </div>
 
-    <label
-        >Title:
-        <input type="text" name="title" required />
-    </label>
+        <button type="submit" class="new-button">Share!</button>
 
-    <label
-        >Location:
-        <input type="text" name="location" />
-    </label>
-
-    <label
-        >Description:
-        <input type="text" name="description" />
-    </label>
-
-    <button type="submit">Share!</button>
-    
     </form>
-    <p><%= error %></p>
+    <p>
+        <%= error %>
+    </p>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>
