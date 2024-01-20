@@ -97,7 +97,8 @@ footer {
 }
 
 .new-button {
-  background-color: #00B7FF;
+  /* background-color: #00B7FF; */
+  padding: 0;
   margin: 25px 0 0 0;
 }
 

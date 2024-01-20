@@ -27,15 +27,15 @@
         <form id="update-form" method="POST" action="/talks/<%= talk._id %>?_method=PUT">
 
             <label>Title:
-                <input type="text" name="title" required />
+                <input class="form-control form-control-lg" type="text" name="title" required />
             </label>
 
             <label>Location:
-                <input type="text" name="location" />
+                <input class="form-control form-control-lg" type="text" name="location" />
             </label>
 
             <label>Description:
-                <input type="text" name="description" />
+                <input class="form-control form-control-lg" type="text" name="description" />
             </label>
 
             <button type="submit">Update!</button>
@@ -63,7 +63,7 @@
 
         <form id="add-comment-form" method="POST" action="/talks/<%= talk._id %>/comments">
             <label>Comment:</label>
-            <textarea name="content"></textarea>
+            <textarea class="form-control form-control-lg" name="content"></textarea>
             <input type="submit" value="Add Review" />
         </form>
 
@@ -75,15 +75,15 @@
 
                 <label>
                     Image Upload
-                    <input type="file" name="imageUpload" required />
+                    <input class="form-control form-control-lg" type="file" name="imageUpload" required />
                 </label>
                 <label>
                     Image Description
-                    <input type="text" name="description" />
+                    <input class="form-control form-control-lg" type="text" name="description" />
                 </label>
                 <label>
                     Image Alt Text
-                    <input type="text" name="alt" />
+                    <input class="form-control form-control-lg" type="text" name="alt" />
                 </label>
                 <button type="submit">Submit Upload</button>
             </form>
